@@ -70,14 +70,18 @@
     <div class="container mx-auto flex justify-between items-center">
 
       <!-- Brand -->
-      <h1 class="text-3xl font-bold">Fritz Padilla III</h1>
+      <h1 class="text-3xl font-bold">
+        <span aria-hidden="true">: </span>Fritz Padilla III<span aria-hidden="true"> : . </span>
+      </h1>
 
       <!-- Menu & Theme Button Container -->
       <div class="flex items-center space-x-4">
         <!-- Desktop Menu -->
         <ul id="menu" class="hidden md:flex space-x-6">
           <li><a href="#about" class="scroll-link">About Me</a></li>
+          <li aria-hidden="true">~</li>
           <li><a href="#sw-engineering-manager" class="hover:text-purple-500 scroll-link">Work Experience</a></li>
+          <li aria-hidden="true">~</li>
           <li><a href="#contact" class="hover:text-purple-500 scroll-link">Contact Me</a></li>
         </ul>
 
@@ -91,10 +95,10 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center bg-white py-4 border-t border-gray-300">
-      <a href="#about" class="py-2 text-gray-700 hover:text-purple-500">About</a>
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center bg-white py-4">
+      <a href="#about" class="py-2 text-gray-700 hover:text-purple-500">About Me</a>
       <a href="#sw-engineering-manager" class="py-2 text-gray-700 hover:text-purple-500">Work Experience</a>
-      <a href="#contact" class="py-2 text-gray-700 hover:text-purple-500">Contact</a>
+      <a href="#contact" class="py-2 text-gray-700 hover:text-purple-500">Contact Me</a>
     </div>
   </nav>
 
@@ -110,7 +114,9 @@
 
     <div class="w-full md:w-1/3 md:pr-16 order-1 md:order-1">
       <div class="max-w-md md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 ">
-        <h2 class="text-lg font-bold my-4 md:mt-12 md:mt-8">Work Experience</h2>
+        <h2 class="text-lg font-bold my-4 md:mt-12 md:mt-8">
+          <span aria-hidden="true"> . : :</span> Work Experience <span aria-hidden="true"></span>
+        </h2>
         <ul class="flex flex-wrap justify-between flex-col">
           <li><a href="#sw-engineering-manager" class="nav scroll-link">Software Engineering Manager</a></li>
           <li><a href="#sw-tech-lead" class="nav scroll-link">Technical Lead</a></li>
@@ -125,7 +131,9 @@
       <div class="leading-loose tracking-tight">
 
         <div class="work-experience">
-          <h3 id="sw-engineering-manager" class="font-bold mt-12 mb-4">Software Engineering Manager</h3>
+          <h3 id="sw-engineering-manager" class="font-bold mt-12 mb-4">
+            Software Engineering Manager <span aria-hidden="true">. : .</span>
+          </h3>
           <div class="mb-4 ml-4">
 
             <p class="pb-4">
@@ -140,7 +148,153 @@
                 Key Projects and Responsibilities
               </button>
 
+              <div x-show="open" x-transition>
+                <ul>
 
+
+                  <li class="py-4">
+                    <ul class="pl-4">
+
+                      <li class="pb-4">
+                        <p class="underline">Design System Adoption</p>
+                        <p>Recruite, hire, and manage an engineering team to develop Bonsai, the design system
+                          for a large-scale platform serving the agriculture industry.
+                          This project was critical in establishing a consistent UI/UX across
+                          multiple applications, improving development efficiency, and
+                          ensuring a cohesive visual identity.
+                        </p>
+
+                        <div id="project-images" class="pt-8">
+
+                          <div x-data="{ 
+                              showModal: false, 
+                              imageUrl: '', 
+                              images: [
+                                './images/bonsai-logo_350.png',
+                                './images/nutrien-bonsai-screen-350.png',
+                                './images/nutrien-bonsai-screen2-350.png'
+                              ] 
+                            }">
+
+                            <!-- Thumbnail Gallery -->
+                            <div class="flex gap-4 flex-wrap justify-start">
+                              <template x-for="(image, index) in images" :key="index">
+                                <img :src="image" alt="Thumbnail"
+                                  class="cursor-pointer w-20 h-20 md:w-32 md:h-32 object-cover border-2 border-gray-300"
+                                  @click="showModal = true; imageUrl = image">
+                              </template>
+                            </div>
+
+                            <!-- Lightbox Modal -->
+                            <div x-show="showModal" x-transition
+                              class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4"
+                              @click.away="showModal = false" @click="showModal = false">
+
+                              <!-- Click on image to close lightbox -->
+                              <img :src="imageUrl" alt="Full-size Image" class="max-w-full max-h-screen"
+                                @click="showModal = false">
+
+                              <!-- Close Button -->
+                              <button class="absolute top-4 right-4 text-white text-2xl" @click="showModal = false">
+                                ✖
+                              </button>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+                        <hr class="mt-8" />
+                      </li>
+
+                      <li class="pb-4">
+                        <p class="underline">Platform Modernization</p>
+                        <p>
+                          Led a team of software engineers to migrate from a legacy monolithic
+                          application to a modern event based microservice architecture,
+                          significantly improving scalability and reducing technical debt.
+                          Manigerial tasks included:
+                        </p>
+                        <ul class="ml-4">
+                          <li>. : Project Planning and Strategy</li>
+                          <li>. : Technical Facilitation</li>
+                          <li>. : Conflict Resolution</li>
+                          <li>. : Resource Management</li>
+                        </ul>
+                        <hr class="mt-4" />
+                      </li>
+
+                      <li class="pb-4">
+                        <p class="underline">Product Feature Teams</p>
+                        <p>Managed many cross-functional engineering teams and worked closely
+                          with product and design teams to align technical goals
+                          with business objectives. Some of the projects included:
+                        </p>
+                        <ul class="ml-4">
+                          <li>. : FinTech</li>
+                          <li>. : User Certification</li>
+                          <li>. : User Authorization</li>
+                          <li>. : Sales Platform Integration</li>
+                        </ul>
+
+                        <div id="project-images" class="pt-8">
+
+                          <div x-data="{ 
+                                                      showModal: false, 
+                                                      imageUrl: '', 
+                                                      images: [
+                                                        './images/nutrien-hub-web1-855w.png',
+                                                        './images/nutrien-hub-web2-855w.png',
+                                                        './images/nutrien-hub-mobile1-750w.png',
+                                                        './images/nutrien-hub-mobile2-750w.png',
+                                                      ] 
+                                                    }">
+
+                            <!-- Thumbnail Gallery -->
+                            <div class="flex gap-4 flex-wrap justify-start">
+                              <template x-for="(image, index) in images" :key="index">
+                                <img :src="image" alt="Thumbnail"
+                                  class="cursor-pointer w-20 h-20 md:w-32 md:h-32 object-cover border-2 border-gray-300"
+                                  @click="showModal = true; imageUrl = image">
+                              </template>
+                            </div>
+
+                            <!-- Lightbox Modal -->
+                            <div x-show="showModal" x-transition
+                              class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4"
+                              @click.away="showModal = false" @click="showModal = false">
+
+                              <!-- Click on image to close lightbox -->
+                              <img :src="imageUrl" alt="Full-size Image" class="max-w-full max-h-screen"
+                                @click="showModal = false">
+
+                              <!-- Close Button -->
+                              <button class="absolute top-4 right-4 text-white text-2xl" @click="showModal = false">
+                                ✖
+                              </button>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                        <hr class="mt-8" />
+                      </li>
+
+                      <li class="pb-4">
+                        <p>Team Growth and Mentorship: </p>
+                        Managed a teams between 5 to 12 engineers, providing mentorship, conducting one-on-one coaching,
+                        and
+                        fostering a collaborative and growth-oriented culture.
+                        Led weekly technical discussions to promote best practices and shared knowledge, ensuring a high
+                        level of engineering competency across the team.
+                      </li>
+
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -160,7 +314,50 @@
                 Key Projects and Responsibilities
               </button>
 
+              <div x-show="open" x-transition>
+                <ul>
+                  I'm working on this section. It's been awhile. Stay tuned...
 
+                  <li class="py-4">
+                    <!--
+                    <ul class="pl-4">
+                      <li class="pb-4">
+                        <p>Real-Time Analytics System:</p>
+                        Led the design and implementation of a real-time analytics platform using Apache Kafka and
+                        Apache
+                        Flink, enabling the
+                        company to gain real-time insights into user behavior.
+                        Ensured the system could handle millions of events per second while maintaining high
+                        availability
+                        and low latency.
+                        Worked with both frontend and backend engineers to deliver an end-to-end solution, from data
+                        ingestion to visualization
+                        in dashboards.
+                      </li>
+                      <li class="pb-4">
+                        <p>Microservices Architecture:</p>
+                        Migrated a monolithic legacy application to a microservices-based architecture using Node.js and
+                        Docker, which improved
+                        deployment flexibility and fault tolerance.
+                        Reduced the time required to implement new features by breaking down the system into smaller,
+                        more
+                        manageable services.
+                        Introduced new tools for monitoring, alerting, and service discovery, such as Prometheus and
+                        Consul.
+                        Tech Stack Optimization
+                      </li>
+                      <li class="pb-4">
+                        <p>Tech Stack Optimization: </p>
+                        Worked with engineering teams to identify and implement technology upgrades to optimize
+                        performance,
+                        including adopting
+                        Redis for caching and optimizing database queries using indexing techniques.
+                      </li>
+                    </ul>
+                    -->
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -182,7 +379,62 @@
                 Key Projects and Responsibilities
               </button>
 
+              <div x-show="open" x-transition>
+                <ul>
 
+
+                  <li class="py-4">
+
+                    I'm working on this section. It's been awhile. Stay tuned...
+
+                    <!--
+                    <ul class="pl-4">
+                      <li class="pb-4">
+                        <p>Motorcycle Travel Blog (MotorcycleDestinations.com): </p>
+                        Built and launched a niche website dedicated to motorcycle enthusiasts looking for travel
+                        recommendations and
+                        destination reviews.
+                        Developed the site using modern web technologies such as React.js, Node.js, and MongoDB,
+                        ensuring it
+                        was fast, secure,
+                        and responsive across devices.
+                        Integrated geolocation services to recommend nearby routes and destinations based on users'
+                        locations.
+                      </li>
+                      <li class="pb-4">
+                        <p>Custom E-Commerce Solutions: </p>
+                        Worked with several small businesses to build custom e-commerce platforms that were tailored to
+                        their specific needs.
+                        Focused on optimizing user experience and streamlining the shopping experience with integrated
+                        payment gateways and
+                        customized product catalogs.
+                        Implemented responsive designs using Tailwind CSS and ensured that the applications were
+                        scalable to
+                        accommodate future
+                        growth.
+                      </li>
+                      <li class="pb-4">
+                        <p>Open-Source Contributions: </p>
+                        Contributed to a number of open-source projects, including bug fixes and feature enhancements
+                        for
+                        popular JavaScript
+                        libraries and frameworks such as React and Node.js.
+                        Published several reusable utility libraries on GitHub, including custom hooks for React and
+                        utility
+                        functions for
+                        better performance in frontend applications.
+                        Participated in open-source communities, attending conferences and contributing to discussions
+                        on
+                        modern web development
+                        practices.
+                      </li>
+                    </ul>
+                    -->
+
+                  </li>
+
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -199,7 +451,11 @@
 
     <div id="contact" class="w-full md:w-1/3 md:pr-16 order-3 md:order-3">
       <div class="pb-20 max-w-md md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0">
-        <p class="font-bold my-4 md:my-12">Contact Me</p>
+
+        <h2 class="text-lg font-bold my-4 md:mt-12">
+          <span aria-hidden="true"> . : :</span> Contact Me
+        </h2>
+
         <ul class="flex flex-wrap justify-between flex-col">
           <li>Email: <a href="mailto://me@fritzpadilla.me" class="nav">me@fritzpadilla.me</a></li>
           <li>Twitter: <a href="#" class="nav">@fritzpadilla3</a></li>
@@ -214,7 +470,11 @@
 
     <div id="about" class="w-full md:w-2/3 order-2 md:order-4">
       <div class="leading-loose tracking-tight">
-        <p class="font-bold my-4 md:my-12">About Me</p>
+
+        <h2 class="text-lg font-bold my-4 md:mt-12">
+          About Me <span aria-hidden="true"> . : .</span>
+        </h2>
+
         <p class="mb-8">As a seasoned software engineer with over 25 years of experience, I&#39ve worked on a wide range
           of
           projects and
@@ -309,6 +569,8 @@
 
   </script>
 
+
+
   <script>
     // Get the button
     const backToTopButton = document.getElementById( "back-to-top" );
@@ -332,6 +594,8 @@
     } );
   </script>
 
+
+
   <script>
     const menuBtn = document.getElementById( 'menu-btn' );
     const mobileMenu = document.getElementById( 'mobile-menu' );
@@ -342,6 +606,8 @@
       mobileMenu.classList.toggle( 'hidden' );
     } );
   </script>
+
+
 
   <script>
     document.addEventListener( "DOMContentLoaded", function ()
