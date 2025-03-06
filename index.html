@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FritzPadilla.me</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    .quicksand {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    ::selection {
+      background: #E9D8FD;
+      color: #202684;
+    }
+
+    ::-moz-selection {
+      background: #E9D8FD;
+      color: #202684;
+    }
+
+    a:not(.nav) {
+      font-weight: bold;
+      text-decoration: none;
+      padding: 2px;
+      transition: all 150ms ease-in-out;
+    }
+
+    a:hover {
+      color: #202684;
+      font-weight: bold;
+      text-decoration: none;
+      padding-bottom: 2px;
+      background: linear-gradient(to right, #202684, #8387c9);
+      background-repeat: repeat-x;
+      background-size: 100% 2px;
+      background-position: 50% 95%;
+      transition: color 150ms ease-in-out;
+    }
+
+    a:focus {
+      outline: none;
+      background: linear-gradient(to right, #202684, #8387c9);
+      background-repeat: repeat-x;
+      background-size: 100% 2px;
+      background-position: 50% 95%;
+    }
+
+    #about {
+      margin-bottom: 150px;
+    }
+  </style>
+
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans quicksand">
+
+  <!-- Navigation Bar -->
+  <nav class="p-4 ">
+    <div class="container mx-auto flex justify-between items-center">
+
+      <!-- Brand -->
+      <h1 class="text-3xl font-bold">Fritz Padilla III</h1>
+
+      <!-- Menu & Theme Button Container -->
+      <div class="flex items-center space-x-4">
+        <!-- Desktop Menu -->
+        <ul id="menu" class="hidden md:flex space-x-6">
+          <li><a href="#about" class="scroll-link">About Me</a></li>
+          <li><a href="#sw-engineering-manager" class="hover:text-purple-500 scroll-link">Work Experience</a></li>
+          <li><a href="#contact" class="hover:text-purple-500 scroll-link">Contact Me</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-2xl text-gray-700">☰</button>
+
+        <!-- Theme Toggle Button -->
+        <button class="js-change-theme focus:outline-none">🌙</button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center bg-white py-4 border-t border-gray-300">
+      <a href="#about" class="py-2 text-gray-700 hover:text-purple-500">About</a>
+      <a href="#sw-engineering-manager" class="py-2 text-gray-700 hover:text-purple-500">Work Experience</a>
+      <a href="#contact" class="py-2 text-gray-700 hover:text-purple-500">Contact</a>
+    </div>
+  </nav>
+
+
+
+
+  <button id="back-to-top"
+    class="fixed bottom-6 left-6 bg-purple-500 text-white p-3 rounded-full shadow-lg hidden hover:bg-purple-700 transition duration-300 ease-in-out">
+    ↑ Top
+  </button>
+
+  <div id="back-to-top" class="max-w-7xl p-6 sm:p-10 md:p-16 flex flex-wrap mx-auto">
+
+    <div class="w-full md:w-1/3 md:pr-16 order-1 md:order-1">
+      <div class="max-w-md md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 ">
+        <h2 class="text-lg font-bold my-4 md:mt-12 md:mt-8">Work Experience</h2>
+        <ul class="flex flex-wrap justify-between flex-col">
+          <li><a href="#sw-engineering-manager" class="nav scroll-link">Software Engineering Manager</a></li>
+          <li><a href="#sw-tech-lead" class="nav scroll-link">Technical Lead</a></li>
+          <li><a href="#individual-contrib" class="nav scroll-link">Individual Contributor</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="w-full md:w-2/3 order-2 md:order-2">
+
+      <div class="leading-loose tracking-tight">
+
+        <div class="work-experience">
+          <h3 id="sw-engineering-manager" class="font-bold mt-12 mb-4">Software Engineering Manager</h3>
+          <div class="mb-4 ml-4">
+
+            <p class="pb-4">
+              As a Software Engineering Manager, I led teams of talented engineers to build scalable, reliable, and
+              efficient software systems. My role involved overseeing the technical direction of projects, managing
+              engineering teams, collaborating with stakeholders, and ensuring timely delivery of high-quality products.
+            </p>
+
+            <div x-data="{ open: false }">
+              <button @click="open = !open"
+                class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition">
+                Key Projects and Responsibilities
+              </button>
+
+              <div x-show="open" x-transition>
+                <ul>
+
+
+                  <li class="py-4">
+                    <ul class="pl-4">
+                      <li class="pb-4">
+                        <p>Product Platform Overhaul:</p>
+                        Spearheaded a platform migration from legacy systems to a modern, cloud-native architecture,
+                        significantly improving
+                        scalability and reducing technical debt.
+                        Managed a cross-functional team of engineers and worked closely with product and design teams to
+                        align technical goals
+                        with business objectives.
+                        Utilized AWS services (Lambda, S3, RDS) and containerized microservices (Docker, Kubernetes) for
+                        seamless deployment
+                        pipelines and better resource management.
+                      </li>
+                      <li class="pb-4">
+                        <p>CI/CD Pipeline Implementation: </p>
+                        Introduced and implemented a robust Continuous Integration/Continuous Deployment (CI/CD)
+                        pipeline
+                        that reduced
+                        deployment time by 30% and improved the reliability of releases.
+                        Integrated tools like Jenkins, GitLab CI, and AWS CodePipeline to automate testing, builds, and
+                        deployment processes.
+                      </li>
+                      <li class="pb-4">
+                        <p>Team Growth and Mentorship: </p>
+                        Managed a team of 15 engineers, providing mentorship, conducting one-on-one coaching, and
+                        fostering
+                        a collaborative and
+                        growth-oriented culture.
+                        Led weekly technical discussions to promote best practices and shared knowledge, ensuring a high
+                        level of engineering
+                        competency across the team.
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li class="pb-4">
+                    <span class="underline">Visuals</span>
+                    <ul class="pl-4">
+                      <li>
+                        <img src="https://picsum.photos/id/237/500/300" alt="Work Image 2"
+                          class="my-4 rounded-md shadow-lg">
+                      </li>
+                    </ul>
+                  </li>
+
+
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-experience">
+          <h3 id="sw-tech-lead" class="font-bold mt-12 mb-4">Technical Lead</h3>
+          <div class="mb-4 ml-4">
+            <p class="pb-4">
+              As a Technical Lead, I focused on setting the technical direction for the projects I worked on,
+              making architectural decisions, and mentoring junior developers. I worked on building high-performance
+              systems, optimizing existing codebases, and ensuring alignment with overall business goals.
+            </p>
+
+            <div x-data="{ open: false }">
+              <button @click="open = !open"
+                class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition">
+                Key Projects and Responsibilities
+              </button>
+
+              <div x-show="open" x-transition>
+                <ul>
+
+
+                  <li class="py-4">
+                    <ul class="pl-4">
+                      <li class="pb-4">
+                        <p>Real-Time Analytics System:</p>
+                        Led the design and implementation of a real-time analytics platform using Apache Kafka and
+                        Apache
+                        Flink, enabling the
+                        company to gain real-time insights into user behavior.
+                        Ensured the system could handle millions of events per second while maintaining high
+                        availability
+                        and low latency.
+                        Worked with both frontend and backend engineers to deliver an end-to-end solution, from data
+                        ingestion to visualization
+                        in dashboards.
+                      </li>
+                      <li class="pb-4">
+                        <p>Microservices Architecture:</p>
+                        Migrated a monolithic legacy application to a microservices-based architecture using Node.js and
+                        Docker, which improved
+                        deployment flexibility and fault tolerance.
+                        Reduced the time required to implement new features by breaking down the system into smaller,
+                        more
+                        manageable services.
+                        Introduced new tools for monitoring, alerting, and service discovery, such as Prometheus and
+                        Consul.
+                        Tech Stack Optimization
+                      </li>
+                      <li class="pb-4">
+                        <p>Tech Stack Optimization: </p>
+                        Worked with engineering teams to identify and implement technology upgrades to optimize
+                        performance,
+                        including adopting
+                        Redis for caching and optimizing database queries using indexing techniques.
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li class="pb-4">
+                    <span class="underline">Visuals</span>
+                    <ul class="pl-4">
+                      <li>
+                        <img src="https://picsum.photos/id/237/500/300" alt="Work Image 2"
+                          class="my-4 rounded-md shadow-lg">
+                      </li>
+                    </ul>
+                  </li>
+
+
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-experience">
+          <h3 id="individual-contrib" class="font-bold mt-12 mb-4">Individual Contributor</h3>
+          <div class="mb-4 ml-4">
+            <p class="pb-4">
+              As an independent contributor, I have worked on several personal projects and freelance contracts. My
+              focus has been on
+              building scalable web applications, contributing to open-source projects, and helping businesses develop
+              custom
+              solutions tailored to their needs.
+            </p>
+
+            <div x-data="{ open: false }">
+              <button @click="open = !open"
+                class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition">
+                Key Projects and Responsibilities
+              </button>
+
+              <div x-show="open" x-transition>
+                <ul>
+
+
+                  <li class="py-4">
+                    <ul class="pl-4">
+                      <li class="pb-4">
+                        <p>Motorcycle Travel Blog (MotorcycleDestinations.com): </p>
+                        Built and launched a niche website dedicated to motorcycle enthusiasts looking for travel
+                        recommendations and
+                        destination reviews.
+                        Developed the site using modern web technologies such as React.js, Node.js, and MongoDB,
+                        ensuring it
+                        was fast, secure,
+                        and responsive across devices.
+                        Integrated geolocation services to recommend nearby routes and destinations based on users'
+                        locations.
+                      </li>
+                      <li class="pb-4">
+                        <p>Custom E-Commerce Solutions: </p>
+                        Worked with several small businesses to build custom e-commerce platforms that were tailored to
+                        their specific needs.
+                        Focused on optimizing user experience and streamlining the shopping experience with integrated
+                        payment gateways and
+                        customized product catalogs.
+                        Implemented responsive designs using Tailwind CSS and ensured that the applications were
+                        scalable to
+                        accommodate future
+                        growth.
+                      </li>
+                      <li class="pb-4">
+                        <p>Open-Source Contributions: </p>
+                        Contributed to a number of open-source projects, including bug fixes and feature enhancements
+                        for
+                        popular JavaScript
+                        libraries and frameworks such as React and Node.js.
+                        Published several reusable utility libraries on GitHub, including custom hooks for React and
+                        utility
+                        functions for
+                        better performance in frontend applications.
+                        Participated in open-source communities, attending conferences and contributing to discussions
+                        on
+                        modern web development
+                        practices.
+                      </li>
+                    </ul>
+                  </li>
+
+
+                  <li class="pb-4">
+                    <span class="underline">Visuals</span>
+                    <ul class="pl-4">
+                      <li>
+                        <img src="https://picsum.photos/id/237/500/300" alt="Work Image 2"
+                          class="my-4 rounded-md shadow-lg">
+                      </li>
+                    </ul>
+                  </li>
+
+
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="mt-12" />
+
+    </div>
+
+
+
+
+
+    <div id="contact" class="w-full md:w-1/3 md:pr-16 order-3 md:order-3">
+      <div class="pb-20 max-w-md md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0">
+        <p class="font-bold my-4 md:my-12">Contact Me</p>
+        <ul class="flex flex-wrap justify-between flex-col">
+          <li>Email: <a href="mailto://me@fritzpadilla.me" class="nav">me@fritzpadilla.me</a></li>
+          <li>Twitter: <a href="#" class="nav">@fritzpadilla3</a></li>
+          <li>GitHub: <a href="#" class="nav">@fritzp3</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/fritz-padilla-iii/" class="nav">fritz-padilla-iii</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+
+
+    <div id="about" class="w-full md:w-2/3 order-2 md:order-4">
+      <div class="leading-loose tracking-tight">
+        <p class="font-bold my-4 md:my-12">About Me</p>
+        <p class="mb-8">As a seasoned software engineer with over 25 years of experience, I&#39ve worked on a wide range
+          of
+          projects and
+          technologies, from creating high-performance systems to leading teams in building scalable solutions. Having
+          navigated
+          both the challenges of coding and the intricacies of software architecture, I&#39ve come to appreciate the
+          value
+          of design
+          and simplicity in software development. My journey has led me to explore various fields, from cloud
+          architecture to data
+          engineering, as I look to stay ahead of emerging trends and technologies.</p>
+
+        <p class="mb-8">Over the years, I&#39ve transitioned from hands-on development to more strategic roles, focusing
+          on
+          creating innovative
+          solutions and leading teams towards efficient, high-impact results. While I&#39ve enjoyed working with AWS,
+          Node.js,
+          TypeScript, and more, I&#39ve come to realize that I thrive in environments where I can focus on
+          conceptualizing
+          projects,
+          building prototypes, and shaping the direction of a product—rather than being stuck in the weeds of day-to-day
+          code
+          development.</p>
+
+        <p class="mb-8">Today, I&#39m driven by a desire to work on small, impactful projects that align with my
+          interests,
+          like motorcycles,
+          technology, and blockchain. My current focus is on helping businesses grow, particularly in the Web3 space,
+          while
+          building content-driven websites and podcasts that tell stories and connect people. As I evolve in my career,
+          I am
+          passionate about making a difference in the tech world without being bogged down by traditional corporate
+          roles. My
+          journey is now centered around creating meaningful, long-term projects and sharing my insights through media
+          content.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script>
+    //Toggle mode
+    const toggle = document.querySelector( '.js-change-theme' );
+    const body = document.querySelector( 'body' );
+    //const profile = document.getElementById('profile');
+
+    toggle.addEventListener( 'click', () =>
+    {
+      if ( body.classList.contains( 'text-gray-700' ) )
+      {
+        toggle.innerHTML = "☀️";
+        body.classList.remove( 'text-gray-700' );
+        body.classList.add( 'text-gray-300' );
+        body.classList.remove( 'bg-gray-100' );
+        body.classList.add( 'bg-gray-900' );
+      } else
+      {
+        toggle.innerHTML = "🌙";
+        body.classList.remove( 'text-gray-300' );
+        body.classList.add( 'text-gray-700' );
+        body.classList.remove( 'bg-gray-900' );
+        body.classList.add( 'bg-gray-100' );
+
+      }
+    } );
+  </script>
+
+
+
+  <script>
+    document.querySelectorAll( '.scroll-link' ).forEach( anchor =>
+    {
+      anchor.addEventListener( 'click', function ( e )
+      {
+        e.preventDefault(); // Prevent default jump behavior
+
+        const targetId = this.getAttribute( 'href' ).substring( 1 );
+        const targetSection = document.getElementById( targetId );
+
+        if ( targetSection )
+        {
+          window.scrollTo( {
+            top: targetSection.offsetTop - 100, // Adjust to avoid overlap
+            behavior: "smooth"
+          } );
+        }
+      } );
+    } );
+
+  </script>
+
+  <script>
+    // Get the button
+    const backToTopButton = document.getElementById( "back-to-top" );
+
+    // When the user scrolls down 100px from the top of the document, show the button
+    window.onscroll = function ()
+    {
+      if ( document.body.scrollTop > 30 || document.documentElement.scrollTop > 30 )
+      {
+        backToTopButton.classList.remove( "hidden" );
+      } else
+      {
+        backToTopButton.classList.add( "hidden" );
+      }
+    };
+
+    // When the user clicks the button, scroll to the top of the document
+    backToTopButton.addEventListener( "click", function ()
+    {
+      window.scrollTo( { top: 0, behavior: 'smooth' } );
+    } );
+  </script>
+
+  <script>
+    const menuBtn = document.getElementById( 'menu-btn' );
+    const mobileMenu = document.getElementById( 'mobile-menu' );
+
+    menuBtn.addEventListener( 'click', () =>
+    {
+      // Toggle the 'hidden' class to show or hide the menu
+      mobileMenu.classList.toggle( 'hidden' );
+    } );
+  </script>
+
+  <script>
+    document.addEventListener( "DOMContentLoaded", function ()
+    {
+      const workBtn = document.getElementById( "work-btn" );
+      const submenu = document.getElementById( "work-submenu" );
+
+      if ( workBtn )
+      { // Check if the element exists
+        workBtn.addEventListener( "click", function ()
+        {
+          submenu.classList.toggle( "hidden" );
+        } );
+      }
+    } );
+  </script>
+
+
+</body>
+
+</html>
