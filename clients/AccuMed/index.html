@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AccuMed | Engineering Solutions by Fritz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    p,
+    a,
+    h1,
+    h2,
+    h3,
+    ol,
+    ul {
+      font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+      color: #1F2F49;
+
+    }
+
+    p,
+    a,
+    ol,
+    ul {
+      line-height: 1.5;
+    }
+
+    a:hover {
+      color: #6587bd;
+    }
+
+    .code-block {
+
+      /* dark slate */
+      color: #e5e7eb;
+      /* light text */
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      /* enables flexbox */
+      gap: 20px;
+      /* space between items */
+      align-items: flex-start;
+      /* align items to top */
+      margin: 2rem;
+    }
+
+    .box {
+      padding: 16px;
+      border-radius: 8px;
+      flex: 1;
+      /* boxes grow equally */
+    }
+
+    .box-code {
+      background: #1F2F49;
+      color: #e5e7eb;
+    }
+
+    .box-info {
+      background: #E8FF8B;
+      color: black;
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+
+    @media (max-width: 960px) {
+      .container960 {
+        flex-direction: column;
+        /* stack vertically */
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .container1280 {
+        flex-direction: column;
+        /* stack vertically */
+      }
+    }
+
+    nav {
+      font-size: 2rem;
+    }
+
+    .top-blue {
+      background-color: #1F2F49;
+      padding-bottom: 0;
+      margin-bottom: 10px;
+      min-height: 40px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .my-link {
+      text-align: center;
+      color: white;
+      align-self: center;
+    }
+  </style>
+
+
+  <script>
+
+    const items = [
+      { itemID: 1, item: 'Item1', subItemOfID: 0 },
+      { itemID: 2, item: 'Item2', subItemOfID: 0 },
+      { itemID: 3, item: 'Item3', subItemOfID: 0 },
+      { itemID: 4, item: 'Item10', subItemOfID: 1 },
+      { itemID: 5, item: 'Item11', subItemOfID: 1 },
+      { itemID: 6, item: 'Item12', subItemOfID: 1 },
+      { itemID: 7, item: 'Item100', subItemOfID: 4 },
+      { itemID: 8, item: 'Item101', subItemOfID: 4 },
+      { itemID: 9, item: 'Item102', subItemOfID: 4 },
+      { itemID: 10, item: 'Item30', subItemOfID: 3 },
+      { itemID: 11, item: 'Item31', subItemOfID: 3 },
+      { itemID: 12, item: 'Item32', subItemOfID: 3 },
+    ];
+
+    console.log( 'items', items );
+
+    const childrenMap = new Map();
+    const itemLookup = new Map();
+
+    for ( const { itemID, item, subItemOfID } of items )
+    {
+      itemLookup.set( itemID, item );
+      if ( !childrenMap.has( subItemOfID ) )
+      {
+        childrenMap.set( subItemOfID, [] );
+      }
+      childrenMap.get( subItemOfID ).push( itemID );
+    }
+
+    console.log( 'childrenMap', childrenMap );
+
+    function printTree ( parentID, depth = 0 )
+    {
+      const children = childrenMap.get( parentID ) || [];
+
+      for ( const childID of children )
+      {
+        console.log( `${ ' '.repeat( depth ) }- ${ itemLookup.get( childID ) }` );
+        printTree( childID, depth + 4 );
+      }
+    }
+
+    // Start from root items (subItemOfID === 0)
+    printTree( 0 );
+
+  </script>
+
+</head>
+
+<body>
+  <header>
+    <div class="top-blue">
+      <a class="my-link" href="https://fritzpadilla.me" target="_blank">
+        www.FritzPadilla.me
+      </a>
+    </div>
+    <div id="data" class="container">
+      <div class="box" style="display: flex; align-items: center; gap: 16px;">
+        <img width="212" src="Logo_Default.png" alt="Logo" />
+        <h1>| Engineering Solutions by Fritz</h1>
+      </div>
+    </div>
+
+
+  </header>
+
+  <div class="container">
+    <p style="font-size: 1.5rem;">
+      The code for the AccuMed development test is executed in the <strong style="color:red">browser console.</strong>
+      <br />
+      The language used for this code challenge is <strong style="color:red">Javascript</strong> and I've provided
+      explainations for the code below.
+      <br />
+      <i>
+        Please note that I wanted to keep everything simple so I didn't use React,
+        TailwindsCSS, Bootstrap or any other library. (This explains why it's so ugly)
+      </i>
+    </p>
+  </div>
+  <div class="container">
+    <nav>
+      <a href="#data">Data</a> | <a href="#maps">Maps</a> | <a href="#print">Print</a> | <a href="#summary">Summary</a>
+    </nav>
+  </div>
+  <hr style="margin:40px 0" />
+
+
+  <div id="data" class="container container960">
+    <div class="box box-code">
+      <pre class="code-block">
+      <code>
+      const items = [
+        { itemID: 1, item: 'Item1', subItemOfID: 0 },
+        { itemID: 2, item: 'Item2', subItemOfID: 0 },
+        { itemID: 3, item: 'Item3', subItemOfID: 0 },
+        { itemID: 4, item: 'Item10', subItemOfID: 1 },
+        { itemID: 5, item: 'Item11', subItemOfID: 1 },
+        { itemID: 6, item: 'Item12', subItemOfID: 1 },
+        { itemID: 7, item: 'Item100', subItemOfID: 4 },
+        { itemID: 8, item: 'Item101', subItemOfID: 4 },
+        { itemID: 9, item: 'Item102', subItemOfID: 4 },
+        { itemID: 10, item: 'Item30', subItemOfID: 3 },
+        { itemID: 11, item: 'Item31', subItemOfID: 3 },
+        { itemID: 12, item: 'Item32', subItemOfID: 3 },
+      ];
+      </code>
+    </pre>
+    </div>
+    <div class="box box-info">
+      <p>
+        An array of objects representing items. Each item has an ID, a name, and a parent ID (subItemOfID).
+        This structure can be used to build a tree or hierarchy.
+      </p>
+      <div style="margin-top:2rem">
+        <a href="#top">Back to Top</a>
+      </div>
+    </div>
+  </div>
+
+  <hr style="margin:40px 0" />
+
+  <div id="maps" class="container container960">
+    <div class="box box-code">
+      <pre class="code-block">
+      <code>
+      const childrenMap = new Map();
+      const itemLookup = new Map();
+
+      for ( const { itemID, item, subItemOfID } of items ) {
+        itemLookup.set( itemID, item );
+        if ( !childrenMap.has( subItemOfID ) ) {
+          childrenMap.set( subItemOfID, [] );
+        }
+        childrenMap.get( subItemOfID ).push( itemID );
+      }
+      </code>
+    </pre>
+    </div>
+    <div class="box box-info">
+      <p>
+        Creates two Maps: itemLookup stores each item by its ID, and childrenMap groups item IDs by their parent ID
+        (subItemOfID). Loops through items to populate both.
+      <div style="margin-top:2rem">
+        <a href="#top">Back to Top</a>
+      </div>
+      </p>
+    </div>
+  </div>
+
+  <hr style="margin:40px 0" />
+
+  <div id="print" class="container container1280">
+    <div class="box box-code">
+      <pre class="code-block">
+          <code>
+          function printTree ( parentID, depth = 0 ) { 
+            const children = childrenMap.get( parentID ) || [];
+            for ( const childID of children ) {
+              console.log( `${ ' '.repeat( depth ) }- ${ itemLookup.get( childID ) }` );
+              printTree( childID, depth + 4 );
+            }
+          }
+          
+          // Start from root items (subItemOfID === 0)
+          printTree( 0 );
+          </code>
+        </pre>
+    </div>
+    <div class="box box-info">
+      <p>
+        Recursively prints the tree of items. Gets children of the current parentID,
+        logs each with indentation based on depth,
+        and calls itself for each child. Starts from the root items (subItemOfID === 0).
+      <div style="margin-top:2rem">
+        <a href="#top">Back to Top</a>
+      </div>
+      </p>
+    </div>
+  </div>
+  <hr style="margin:40px 0" />
+  <div id="summary" class="box box-info">
+    <div>
+
+      <h3>Runtime / Performance</h3>
+      <ol>
+        <li>Building the maps (childrenMap and itemLookup)</li>
+        <ul>
+          <li>The code goes through each item in the array once.</li>
+          <li>JS Maps are faster and more precise than JS Objects</li>
+        </ul>
+        <li>
+          Printing the tree recursively (printTree).
+          <ul>
+            <li>Each item is checked only once which requires less work for the browser</li>
+            <li>The total time will grow in proportion to the number of items</li>
+            <li>If items grow to around 2 dozen, pagination is required (perferably server side)</li>
+          </ul>
+        </li>
+      </ol>
+
+
+
+
+      <h3>Resource / Memory Considerations</h3>
+      <ul>
+        <li>Memory usage:</li>
+        <ul>
+          <li>itemLookup stores all items by their IDs.</li>
+          <li>childrenMap stores arrays of child IDs for each parent.</li>
+          <li>Both grow linearly with the number of items.</li>
+        </ul>
+        <li>Recursion depth:</li>
+        <ul>
+          <li>The function calls itself for each child.</li>
+          <li>If the tree is very deep, you could reach the browser or Node.js call stack limit.</li>
+        </ul>
+      </ul>
+
+
+      <h3>Potential Bottlenecks in a Web Environment</h3>
+      <ol>
+        <li>Deep trees may crash the program due to too many recursive calls.</li>
+        <ul>
+          <li>Solution: Use an iterative approach with a stack instead of recursion.</li>
+        </ul>
+        <li>Large numbers of items could make logging or rendering slow.</li>
+        <ul>
+          <li>Solution: Load data gradually, paginate, or only render the visible portion of the tree.</li>
+        </ul>
+      </ol>
+
+      <div style="margin-top:2rem">
+        <a href="#top">Back to Top</a>
+      </div>
+
+
+    </div>
+  </div>
+
+  <footer style="text-align:center;font-size:1.5rem; background:#1F2F49; color:white; padding:2rem">
+    <p>
+      <a href="https://fritzpadilla.me" target="_blank" rel="noopener noreferrer"
+        style="color:white; text-decoration: none;">
+        www.FritzPadilla.me
+      </a>
+    </p>
+  </footer>
+
+
+</body>
+
+</html>
