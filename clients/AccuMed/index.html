@@ -25,6 +25,10 @@
 
     }
 
+    h2 {
+      margin: 2rem;
+    }
+
     p,
     a,
     ol,
@@ -37,11 +41,7 @@
     }
 
     .code-block {
-
-      /* dark slate */
       color: #e5e7eb;
-      /* light text */
-      padding: 16px;
       border-radius: 8px;
       overflow-x: auto;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -66,7 +66,7 @@
     }
 
     .box {
-      padding: 16px;
+      padding: 8px;
       border-radius: 8px;
       flex: 1;
       /* boxes grow equally */
@@ -181,7 +181,7 @@
         www.FritzPadilla.me
       </a>
     </div>
-    <div id="data" class="container">
+    <div class="container">
       <div class="box" style="display: flex; align-items: center; gap: 16px;">
         <img width="212" src="Logo_Default.png" alt="Logo" />
         <h1>| Engineering Solutions by Fritz</h1>
@@ -212,7 +212,8 @@
   <hr style="margin:40px 0" />
 
 
-  <div id="data" class="container container960">
+  <h2 id="data">Data</h2>
+  <div class="container container960">
     <div class="box box-code">
       <pre class="code-block">
       <code>
@@ -245,8 +246,8 @@
   </div>
 
   <hr style="margin:40px 0" />
-
-  <div id="maps" class="container container960">
+  <h2 id="maps">Maps</h2>
+  <div class="container container960">
     <div class="box box-code">
       <pre class="code-block">
       <code>
@@ -275,22 +276,22 @@
   </div>
 
   <hr style="margin:40px 0" />
-
-  <div id="print" class="container container1280">
+  <h2 id="print">Print</h2>
+  <div class="container container1280">
     <div class="box box-code">
-      <pre class="code-block">
-          <code>
-          function printTree ( parentID, depth = 0 ) { 
-            const children = childrenMap.get( parentID ) || [];
-            for ( const childID of children ) {
-              console.log( `${ ' '.repeat( depth ) }- ${ itemLookup.get( childID ) }` );
-              printTree( childID, depth + 4 );
-            }
-          }
-          
-          // Start from root items (subItemOfID === 0)
-          printTree( 0 );
-          </code>
+      <pre class="code-block" style="padding-right:1.1rem">
+      <code>
+      function printTree ( parentID, depth = 0 ) { 
+        const children = childrenMap.get( parentID ) || [];
+        for ( const childID of children ) {
+          console.log( `${ ' '.repeat( depth ) }- ${ itemLookup.get( childID ) }` );
+          printTree( childID, depth + 4 );
+        }
+      }
+      
+      // Start from root items (subItemOfID === 0)
+      printTree( 0 );
+      </code>
         </pre>
     </div>
     <div class="box box-info">
@@ -305,8 +306,9 @@
     </div>
   </div>
   <hr style="margin:40px 0" />
-  <div id="summary" class="box box-info">
-    <div>
+  <h2 id="summary">Summary</h2>
+  <div class="container">
+    <div class=" box box-info">
 
       <h3>Runtime / Performance</h3>
       <ol>
