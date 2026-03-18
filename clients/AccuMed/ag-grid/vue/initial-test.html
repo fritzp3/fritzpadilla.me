@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AG Grid - Row Grouping: Group Default Expanded (Vue)</title>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/dist/ag-grid-enterprise.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 1.2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <olympic-grid />
+  </div>
+
+  <script>
+    const { createApp, onMounted } = Vue;
+
+    // The ag-grid-enterprise CDN bundle auto-registers enterprise + community modules.
+    // Explicitly list the ones this example needs.
+    agGrid.ModuleRegistry.registerModules( [
+      agGrid.ClientSideRowModelModule,
+      agGrid.RowGroupingModule,
+    ] );
+
+    const OlympicGrid = {
+      template: `
+        <div style="display:flex;flex-direction:column;height:100%;">
+          <a href="../index.html" class="back-link">&#8592; Back to Examples</a>
+          <h1>Row Grouping — Group Default Expanded (Vue)</h1>
+          <div id="my-grid" class="ag-theme-alpine" style="flex:1;width:100%;"></div>
+        </div>
+      `,
+      setup ()
+      {
+        onMounted( () =>
+        {
+          const columnDefs = [
+            { field: "country", rowGroup: true, hide: true },
+            { field: "year", rowGroup: true, hide: true },
+            { field: "athlete" },
+            { field: "sport" },
+            { field: "gold" },
+            { field: "silver" },
+            { field: "bronze" },
+          ];
+
+          const gridOptions = {
+            columnDefs,
+            defaultColDef: {
+              flex: 1,
+              minWidth: 100,
+            },
+            autoGroupColumnDef: {
+              minWidth: 200,
+            },
+            // Expand the first group level (Country) by default; Year groups stay collapsed.
+            // Set to -1 to expand all levels.
+            groupDefaultExpanded: 1,
+            rowData: [],
+          };
+
+          const gridDiv = document.querySelector( "#my-grid" );
+          const gridApi = agGrid.createGrid( gridDiv, gridOptions );
+
+          // Fetch the same Olympic dataset used in the official AG Grid example
+          fetch( "https://www.ag-grid.com/example-assets/olympic-winners.json" )
+            .then( ( resp ) => resp.json() )
+            .then( ( data ) => gridApi.setGridOption( "rowData", data ) );
+        } );
+      },
+    };
+
+    createApp( {
+      components: { OlympicGrid },
+    } ).mount( "#app" );
+  </script>
+</body>
+
+</html>

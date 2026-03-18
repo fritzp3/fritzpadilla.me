@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AG Grid - Row Grouping: Group Default Expanded (Vanilla JS)</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/dist/ag-grid-enterprise.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 1.2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: #000;
+    }
+
+    #my-grid {
+      flex: 1;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <a href="../index.html" class="back-link">&#8592; Back to Examples</a>
+    <h1>Row Grouping — Group Default Expanded (Vanilla JS)</h1>
+    <div id="my-grid" class="ag-theme-alpine"></div>
+  </div>
+
+  <script>
+    // TypeScript equivalent (compiled to JS for browser use):
+    //
+    // import {
+    //   createGrid,
+    //   GridOptions,
+    //   ColDef,
+    //   ModuleRegistry,
+    //   ClientSideRowModelModule,
+    // } from "ag-grid-community";
+    // import { RowGroupingModule } from "ag-grid-enterprise";
+    //
+    // ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
+
+    agGrid.ModuleRegistry.registerModules( [
+      agGrid.ClientSideRowModelModule,
+      agGrid.RowGroupingModule,
+    ] );
+
+    /** @type {import("ag-grid-community").ColDef[]} */
+    const columnDefs = [
+      { field: "country", rowGroup: true, hide: true },
+      { field: "year", rowGroup: true, hide: true },
+      { field: "athlete" },
+      { field: "sport" },
+      { field: "gold" },
+      { field: "silver" },
+      { field: "bronze" },
+    ];
+
+    /** @type {import("ag-grid-community").GridOptions} */
+    const gridOptions = {
+      columnDefs,
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+      },
+      autoGroupColumnDef: {
+        minWidth: 200,
+      },
+      // Expand the first group level (Country) by default; Year groups stay collapsed.
+      // Set to -1 to expand all levels.
+      groupDefaultExpanded: 1,
+      rowData: [],
+    };
+
+    const gridDiv = /** @type {HTMLElement} */ ( document.querySelector( "#my-grid" ) );
+    const gridApi = agGrid.createGrid( gridDiv, gridOptions );
+
+    fetch( "https://www.ag-grid.com/example-assets/olympic-winners.json" )
+      .then( (/** @type {Response} */ resp ) => resp.json() )
+      .then( (/** @type {any[]} */ data ) => gridApi.setGridOption( "rowData", data ) );
+  </script>
+</body>
+
+</html>
